@@ -28,20 +28,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMapClickListener {
 
-    EditText txtLatitud, txtLongitud;
     double latitude;
     double longitude;
     GoogleMap mMap;
 
     Button btnGPS;
-    TextView tvUbicacion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvUbicacion = (TextView)findViewById(R.id.tvUbicacion);
         btnGPS = (Button)findViewById(R.id.button);
 
         btnGPS.setOnClickListener(new View.OnClickListener(){
@@ -50,13 +48,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 LocationManager locationManager = (LocationManager) MainActivity.this.getSystemService(Context.LOCATION_SERVICE);
                 LocationListener locationListener = new LocationListener() {
                     public void onLocationChanged(Location location) {
-                        tvUbicacion.setText(""+location.getLatitude()+" "+location.getLongitude());
                         latitude = location.getLatitude();
                         longitude = location.getLongitude();
 
 
 
                         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+                        assert mapFragment != null;
                         mapFragment.getMapAsync(MainActivity.this);
                     }
 
@@ -69,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 int permissionCheck = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
 
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             }
 
         });
@@ -90,9 +87,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
 
-        txtLatitud = findViewById(R.id.txtLatitud);
-        txtLongitud = findViewById(R.id.txtLongitud);
-
     }
 
     @Override
@@ -109,8 +103,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
-        txtLatitud.setText(""+latLng.latitude);
-        txtLongitud.setText(""+latLng.longitude);
 
         mMap.clear();
         LatLng mexico = new LatLng(latLng.latitude, latLng.longitude);
@@ -121,8 +113,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapLongClick(@NonNull LatLng latLng) {
-        txtLatitud.setText(""+latLng.latitude);
-        txtLongitud.setText(""+latLng.longitude);
 
         mMap.clear();
         LatLng mexico = new LatLng(latLng.latitude, latLng.longitude);

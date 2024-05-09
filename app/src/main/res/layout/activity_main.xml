@@ -1,78 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/txtLatitud"
-        android:layout_width="324dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtLongitud"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLatitud" />
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="420dp"
+        android:layout_width="0dp"
         android:layout_height="810dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         map:cameraZoom="10"
         map:uiRotateGestures="true"
         map:uiZoomControls="true" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="676dp"
-        android:backgroundTint="#BF2405"
-        android:textColor="#FFFFFF"
-        android:text="GPS"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="#BF2405"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="@+id/map"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/tvUbicacion"
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ubicacion"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
+        android:layout_marginTop="688dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Ruta 1"
+        android:textColor="#BF2405"
+        app:layout_constraintHorizontal_bias="0.771"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="416dp"
+        android:layout_width="0dp"
         android:layout_height="64dp"
         android:background="#BF2405"
         android:minHeight="?attr/actionBarSize"
@@ -85,17 +66,28 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView2"
         android:layout_width="95dp"
         android:layout_height="32dp"
-        android:text="RUTAS"
+        android:layout_marginBottom="20dp"
+        android:text="Rutas"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/map"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/txtLatitud"
-        app:layout_constraintVertical_bias="0.617" />
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="20dp"
+         />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:text="Ruta 1"
+        android:textColor="#BF2405"
+        app:layout_constraintBottom_toBottomOf="@+id/map"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.495"
+        tools:layout_editor_absoluteX="33dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
